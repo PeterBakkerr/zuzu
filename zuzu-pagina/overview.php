@@ -36,16 +36,16 @@
     <!--klantgegevens + form + button-->
       <div class="container">
         <div class="col-12 mt-3 p-3 border rounded">
-            <h3 class="">Bestelling</h3>
-            <p class="">Maki komkommer: 2</p>
-            <p class="">Totaal: $5,00</p>
+            <h3 class="">bestelling</h3>
+            <p class=""> saka nigiri :  <?php   session_start(); echo $_SESSION['aantal']; ?> </p>
+            <p class=""></p>
         </div>
         <div class="col-12 p-3 border rounded">
             <h3 class="lh-1">Klantgegevens</h3>
-            <p class="lh-1">Zoe Willems</p>
-            <p class="lh-1">Teststraat 1</p>
-            <p class="lh-1">9999ZZ Test</p>
-            <p class="lh-1">test@gmail.com</p>
+            <p class="lh-1"><?php echo  $_SESSION['voornaam' ]; echo "."; echo $_SESSION['achternaam']; ?></p>
+            <p class="lh-1"><?php echo $_SESSION['woonplaats']; ?></p>
+            <p class="lh-1"><?php echo $_SESSION['postcode']; ?></p>
+            <p class="lh-1"> <?php echo $_SESSION['E-mail']; ?></p>
         </div>
       </div>
 

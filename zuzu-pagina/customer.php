@@ -1,5 +1,27 @@
+<?php
+$melding = "";
+if (isset($_POST['overzicht'])) {
+    if (!empty($_POST['aantal'])) {
+
+        $amount = filter_input(INPUT_POST, "aantal", FILTER_SANITIZE_NUMBER_INT);
+        if (!$amount) {
+            $melding = "vul een aantal in";
+        } else {
+            session_start();
+            $amount = $_POST['aantal'];
+            $_SESSION['aantal'] = $amount;
+            header('Location: overview.php');
+        }
+    } else {
+        $melding = "niet alles is ingevuld";
+    }
+} else {
+    $amount = "";
+}
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +32,6 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!--header + navbar + banner-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="#"><img src="" class="" alt="" width="">ZUZU</a>
@@ -33,8 +54,26 @@
         <div class="header-image img-fluid"></div>
       </div>
 
-    <!--footer (contactgegevens + openingstijden col-6)-->
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <h1> 1. saka nigiri </h1>
+            </div>
+                <h5 class="card-title"></h5>
+            <div> <img class="image-c" src="img/img_10.png" ></div>
+                <p class="card-text">1 piece €3.50 <br> impressie: chef's favorite </p>
+                    <form method="post" action="">
+                <input  name="aantal" type="number" class="form-control" id="aantal" >
 
+            </div>
+        </div>
+    </div>
+
+    <input type="submit" class="btn btn-primary" name="overzicht" value="Naar overzicht" class="knop">
+    </form>
+    <?php
+    echo $melding;
+    ?>
     <div class="container-fluid bg-dark mt-5 pb-3">
       <div class="row">
         <div class="col-12 col-md-6 col-lg-6">
@@ -57,6 +96,5 @@
         </div>
       </div>
     </div>
-    
 </body>
 </html>
